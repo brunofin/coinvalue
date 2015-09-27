@@ -1,0 +1,13 @@
+{
+  "name": "DGuardAngular",
+  "description": "D-Guard web interface",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-material": "latest",
+    "angular-material-icons": "latest"
+  }
+}
