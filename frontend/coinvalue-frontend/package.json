@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "private": true,
   "name": "Coinvalue",
-  "description": "",
+  "description": "Coinvalue front-end project",
   "repository": "https://github.com/brunofin/coinvalue",
   "devDependencies": {
     "bower": "latest",

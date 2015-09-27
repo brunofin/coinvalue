@@ -1,6 +1,6 @@
 {
-  "name": "DGuardAngular",
-  "description": "D-Guard web interface",
+  "name": "Coinvalue",
+  "description": "Coinvalue front-end project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
