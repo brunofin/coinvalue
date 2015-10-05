@@ -45,16 +45,15 @@ class Provider(models.Model):
 class History(models.Model):
     provider = models.ForeignKey(Provider)
     date = models.DateTimeField()
-    buy = models.PositiveSmallIntegerField()
-    sell = models.PositiveSmallIntegerField()
-    high = models.PositiveSmallIntegerField()
-    low = models.PositiveSmallIntegerField()
+    buy = models.FloatField()
+    sell = models.FloatField()
+    high = models.FloatField()
+    low = models.FloatField()
     
     def to_json(self):
         return {
             'id': self.pk,
-            'providerId': self.provider.pk,
-            'date': self.date,
+            'date': self.date.timestamp(),
             'buy': self.buy,
             'sell': self.sell,
             'high': self.high,

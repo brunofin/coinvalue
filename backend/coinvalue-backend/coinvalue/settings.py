@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django_cron',
     'currency',
     'apiv1',
 )
@@ -52,6 +53,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+CRON_CLASSES = [
+    'cronjobs.UpdateHistory',
+]
+DJANGO_CRON_DELETE_LOGS_OLDER_THAN = 2
 
 ROOT_URLCONF = 'coinvalue.urls'
 

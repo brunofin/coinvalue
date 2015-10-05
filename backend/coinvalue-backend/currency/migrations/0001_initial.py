@@ -13,25 +13,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DigitalCurrency',
             fields=[
-                ('id', models.CharField(max_length=5, serialize=False, primary_key=True)),
+                ('id', models.CharField(serialize=False, primary_key=True, max_length=5)),
                 ('name', models.CharField(max_length=25)),
             ],
         ),
         migrations.CreateModel(
             name='History',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
                 ('date', models.DateTimeField()),
-                ('buy', models.PositiveSmallIntegerField()),
-                ('sell', models.PositiveSmallIntegerField()),
-                ('high', models.PositiveSmallIntegerField()),
-                ('low', models.PositiveSmallIntegerField()),
+                ('buy', models.FloatField()),
+                ('sell', models.FloatField()),
+                ('high', models.FloatField()),
+                ('low', models.FloatField()),
             ],
         ),
         migrations.CreateModel(
             name='Provider',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
                 ('name', models.CharField(max_length=255)),
                 ('url', models.URLField()),
                 ('ticker', models.URLField()),

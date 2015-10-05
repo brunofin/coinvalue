@@ -40,7 +40,7 @@
     "fields" : {
 	"url" : "https://www.bitstamp.net/",
 	"refCurrency" : "USD",
-	"ticker" : "",
+	"ticker" : "https://www.bitstamp.net/api/ticker/",
 	"name" : "Bitstamp",
 	"digitalCurrency" : "BTC"
     },
