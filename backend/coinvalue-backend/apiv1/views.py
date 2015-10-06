@@ -4,17 +4,27 @@ from currency.models import Provider, History
 from django.http.response import HttpResponse
 import http, json
 
-def providers(request):
+def providers(request, providerId=None):
     if request.method == 'GET':
         # returns a simplified list of providers
-        providers = Provider.objects.all()
-
-        l = []
-        for provider in providers:
-            l.append(provider.to_json())
-        
-        return HttpResponse(status=http.client.OK, 
-            content=json.dumps(l), content_type="application/json")
+        if providerId is None:
+                
+            providers = Provider.objects.all()
+    
+            l = []
+            for provider in providers:
+                l.append(provider.to_json())
+            
+            return HttpResponse(status=http.client.OK, 
+                content=json.dumps(l), content_type="application/json")
+        else:
+            try:
+                provider = Provider.objects.get(id=providerId)
+            except Provider.DoesNotExist:
+                return HttpResponse(status=http.client.NOT_FOUND)
+            
+            return HttpResponse(status=http.client.OK, 
+                content=json.dumps(provider.to_json()), content_type="application/json") 
     else:
         return HttpResponse(status=http.client.METHOD_NOT_ALLOWED)
 
