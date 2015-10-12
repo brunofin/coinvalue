@@ -2,7 +2,7 @@
 
 from currency.models import DigitalCurrency, Provider, History
 import requests, json
-from datetime import datetime
+from django.utils import timezone
 
 class Ticker:
     provider = None
@@ -39,12 +39,11 @@ class MercadoBitcoinTicker(Ticker):
     
     def map(self):
         data = self.get_data()
-        print(data)
-        
+
         # https://www.mercadobitcoin.net/api/
         return {
             'provider': self.provider,
-            'date': datetime.now(),
+            'date': timezone.now(),
             'buy': data['ticker']['buy'],
             'sell': data['ticker']['sell'],
             'high': data['ticker']['high'], 
@@ -66,7 +65,7 @@ class BitstampBTC(Ticker):
         # https://www.bitstamp.net/api/
         return {
             'provider': self.provider,
-            'date': datetime.now(),
+            'date': timezone.now(),
             'buy': data['last'],
             'sell': data['ask'],
             'high': data['high'], 
