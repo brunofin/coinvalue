@@ -2,7 +2,7 @@ var sass = require('node-sass');
 var fs = require('fs');
 
 sass.render({
-    file : 'app/scss/dguard.min.scss',
+    file : 'build/temp/scss/styles.min.scss',
     outputStyle: 'compressed',
     newLines: 'unix'
 }, function(error, result) {

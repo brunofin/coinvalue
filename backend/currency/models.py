@@ -57,5 +57,7 @@ class History(models.Model):
             'buy': self.buy,
             'sell': self.sell,
             'high': self.high,
-            'low': self.low
+            'low': self.low,
+            'currency': self.provider.refCurrency,
+            'digitalCurrency': self.provider.digitalCurrency.id
         }

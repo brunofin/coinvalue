@@ -55,32 +55,26 @@
 		    }
 		</script>
 		
-		
-	    
 	    <title>Coinvalue</title>
 	    
-<!-- 	    <link rel="stylesheet" href="/styles.min.css"> -->
-<!--    	    <script type="application/javascript" src="/app.min.js"></script> -->
+	    <link rel="stylesheet" href="/styles.min.css">
+   	    <script type="application/javascript" src="/app.min.js"></script>
    	    
-   	    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
-   	    <script type="application/javascript" src="/bower_components/angular/angular.js"></script>
-   	    <script type="application/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
-   	    <script type="application/javascript" src="/bower_components/angular-aria/angular-aria.js"></script>
-   	    <script type="application/javascript" src="/bower_components/angular-material/angular-material.js"></script>
-   	    
-   	    <script type="application/javascript" src="/scripts/app/Providers.js"></script>
-   	    <script type="application/javascript" src="/scripts/app/Coinvalue.js"></script>
 	
 	</head>
 	
-	<body ng-controller="teste" layout layout-align="center center">
+	<body layout="row" layout-margin layout-align="center center">
+	
 		<div ng-hide="true">
-			<h1>Carregando, aguarde...</h1>		
+			<h1>Loading, please wait.</h1>		
 		</div>
 		
-		<ul>
-			<li ng-repeat="provider in providers">{{ provider.name}} - {{ provider.digitalCurrency }}</li>
-		</ul>
+		<md-card>
+			<md-card-body>
+		
+				<coin-history></coin-history>
+			</md-card-body>
+		</md-card>
 		
 	</body>
 </html>

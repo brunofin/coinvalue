@@ -1,56 +1,48 @@
 var scripts = [
-    'app/bower_components/angular/angular.js',
-    'app/bower_components/angular-animate/angular-animate.js',
-    'app/bower_components/angular-aria/angular-aria.js',
-    'app/bower_components/angular-material/angular-material.js',
-    'app/bower_components/angular-material-icons/angular-material-icons.js',
-    
-    'app/js/app/DAO.js',
-    'app/js/app/Model.js',
-    'app/js/app/Strings.js',
-    'app/js/app/Metadata.js',
-    'app/js/app/BaseDirectives.js',
-    'app/js/app/Conexoes.js',
-    'app/js/app/DGuard.js'
+               /* angular base */
+       'build/temp/bower_components/angular/angular.js',
+       'build/temp/bower_components/angular-animate/angular-animate.js',
+       'build/temp/bower_components/angular-aria/angular-aria.js',
+       
+       		/* Angular-Chart.js */
+       'build/temp/bower_components/Chart.js/Chart.js',
+       'build/temp/bower_components/angular-chart.js/dist/angular-chart.js',
+       
+       		
+       		/* material design */
+       'build/temp/bower_components/angular-material/angular-material.js',
+       'build/temp/bower_components/angular-material-icons/angular-material-icons.js',
+       
+       		/* app */
+       'build/temp/scripts/app/Exchange.js',
+       'build/temp/scripts/app/History.js',
+       'build/temp/scripts/app/Providers.js',
+       'build/temp/scripts/app/Coinvalue.js',
     ],
-    file = 'dguard.min.js';
-
-//var uglify = require("uglify-js");
-//    
-//    
-//
-//
-//var uglifiedScripts = uglify.minify(scripts);
-//
-//fs.writeFile('app/' + finalFilename, uglifiedScripts.code, function (err){
-//  if(err) {
-//    console.log(err);
-//  } else {
-//    console.log("Script generated and saved:", finalFilename);
-//  }      
-//});
+    file = 'app.min.js';
 
 
 var fs = require('fs'),
-    ClosureCompiler = require("closurecompiler");
- 
+ClosureCompiler = require("closurecompiler");
+
 ClosureCompiler.compile(
-    scripts,
-    {
-        compilation_level: "WHITESPACE_ONLY", // WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS, ADVANCED_OPTIMIZATIONS 
-        language_in: 'ECMASCRIPT5',
-    },
-    function(error, result) {
-        if (result) {
-            fs.writeFile('build/temp/' + file, result, function (error){
-        	if(error) {
-        	    console.log(error);
-        	} else {
-        	    console.log("JavaScript files compressed!", file);
-        	}      
-            });
-        } else {
-            console.log(error);
-        }
+scripts,
+{
+    compilation_level: "WHITESPACE_ONLY", // WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS, ADVANCED_OPTIMIZATIONS 
+    language_in: 'ECMASCRIPT5',
+    create_source_map: 'build/temp/' + file + '.map',
+},
+function(error, result) {
+    if (result) {
+        fs.writeFile('build/temp/' + file, result + '\n//# sourceMappingURL=' + file + '.map', function (error) {
+    	if(error) {
+    	    console.error(error);
+    	} else {
+    	    console.log("JavaScript files compressed!", file);
+    	}      
+        });
+    } else {
+        console.error(error);
     }
+}
 );

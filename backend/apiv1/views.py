@@ -36,7 +36,7 @@ def history(request, providerId, historyId=None):
             except Provider.DoesNotExist:
                 return HttpResponse(status=http.client.NOT_FOUND)
             
-            history = History.objects.filter(provider=provider)
+            history = History.objects.filter(provider=provider).order_by('date')
             
             l = []
             for h in history:

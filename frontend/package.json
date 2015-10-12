@@ -15,9 +15,11 @@
     "node-sass": "latest",
     "request": "latest",
     "closurecompiler": "latest",
-    "ncp": "latest"
+    "ncp": "latest",
+    "http-server": "latest"
   },
   "scripts": {
+    "preinstall": "npm cache clear && npm update",
     "postinstall": "bower install",
     "prestart": "npm install",
 
@@ -36,15 +38,18 @@
     "minifyjs": "node build/minifyjs.js",
 
     "cleanbuild": "node build/clean.js",
-    "prebuild": "node build/bringfiles.js && npm run sass && npm run minifyjs",
+    "postbuild": "node build/bringfiles.js && npm run sass && npm run minifyjs",
+    "build": "npm install",
     
-    "prebuilddev": "npm run prebuild",
+    "prebuilddev": "npm run build",
     "builddev":  "node build/builddev.js",
     "postbuilddev": "npm run cleanbuild",
     
-    "prebuilddeploy": "npm run prebuild",
+    "prebuilddeploy": "npm run build",
 	"builddeploy": "node build/builddeploy.js",
-	"postbuilddeploy": "npm run cleanbuild"
+	"postbuilddeploy": "npm run cleanbuild",
     
+    "prewebserver": "npm run builddev",
+    "webserver": "node node_modules/http-server/bin/http-server ./build/dev --cors -o -c-1"
   }
 }

@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//apiv1/views.py=utf-8
 encoding//backend/settings.py=utf-8
+encoding//currency/management/commands/gethistory.py=utf-8
+encoding//currency/models.py=utf-8
+encoding//currency/tickers.py=utf-8
